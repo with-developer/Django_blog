@@ -1,0 +1,129 @@
+{% extends "blog/base.html" %}
+{% load category_filter %}
+
+
+{% block content2 %}
+
+  <div class="container-fluid">
+	  <div class="margin">
+    <div>
+      <ul class="nav navbar-nav">
+			  
+		  {% if not request.get_full_path|category_filter2 %}
+		  <li class="active"><a class="btn btn-info mb-2" href="/">All Posts</a></li>
+		  {% else %}
+		  <li class="active"><a class="btn btn-outline-info mb-2" href="/">All Posts</a></li>
+		  {% endif %}
+		  
+		  <br><br>
+		  {% if 'Security' in request.get_full_path|category_filter2 %}
+		  <li><a class="btn btn-info mb-2"  href="?category=Security">Security</a></li>
+		  {% else %}
+		  <li><a class="btn btn-outline-info mb-2"  href="?category=Security">Security</a></li>
+		  {% endif %}
+		  {% if request.get_full_path|category_filter2 == 'Security_CTF' %}
+		  <li>└<a class="btn btn-info mb-2" href="?category=Security_CTF">CTF</a></li>
+		  {% else %}
+		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_CTF">CTF</a></li>
+		  {% endif %}
+		  {% if request.get_full_path|category_filter2 == 'Security_Wargame' %}
+		  <li>└<a class="btn btn-info mb-2" href="?category=Security_Wargame">Wargame</a></li>
+		  {% else %}
+		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_Wargame">Wargame</a></li>
+		  {% endif %}
+		  {% if request.get_full_path|category_filter2 == 'Security_Study' %}
+		  <li>└<a class="btn btn-info mb-2" href="?category=Security_Study">Study</a></li>
+		  {% else %}
+		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_Study">Study</a></li>
+		  {% endif %}
+		  <br>
+		  
+		  {% if 'Development' in request.get_full_path|category_filter2 %}
+          <li><a class="btn btn-info mb-2" href="?category=Development">Development</a></li>
+		  {% else %}
+		  <li><a class="btn btn-outline-info mb-2" href="?category=Development">Development</a></li>
+		  {% endif %}
+		  {% if request.get_full_path|category_filter2 == 'Development_Programming' %}
+		  <li>└<a class="btn btn-info mb-2" href="?category=Development_Programming">Programming</a></li>
+		  {% else %}
+		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Development_Programming">Programming</a></li>
+		  {% endif %}
+		  {% if request.get_full_path|category_filter2 == 'Development_Study' %}
+		  <li>└<a class="btn btn-info mb-2" href="?category=Development_Study">Study</a></li> 
+		  {% else %}
+		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Development_Study">Study</a></li> 
+		  {% endif %}
+		  <br>
+
+		  {% if 'Other' in request.get_full_path|category_filter2 %}
+		  <li class="active"><a class="btn btn-info mb-2" href="?category=Other">Other</a></li>
+		  {% else %}
+		  <li class="active"><a class="btn btn-outline-info mb-2" href="?category=Other">Other</a></li>
+		  {% endif %}
+		  
+      </ul>
+		</div>
+    </div>
+  </div>
+{% endblock content2 %}
+
+
+
+{% block content %}
+<!-- Search Form -->
+<form class="form-inline my-2 my-lg-0 pb-2"> 
+	<input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search" style="width: 400px">
+    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
+</form>
+
+
+ <h1 class="mb-3">
+	 {% if not request.get_full_path|category_filter2 %}
+	 <font size=6px>Category By 'All Posts' </font><font size=5px;>({{ page_obj.paginator.count }})</font>
+	 {% else %}
+	 <font size=6px>Category By '{{ request.get_full_path|category_filter2 }}'</font> <font size=5px;>({{ page_obj.paginator.count }})</font>
+	 {% endif %}
+</h1>
+
+	{% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
+				<small class="text-muted">{{ post.date_posted|date:"Y년 m월 d일 " }}</small>
+				
+				
+            </div>
+		 <font size="3em"><small class="text-muted">[{{ post.category|safe }}]</small></font>
+		  <h2><a class="article-title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <!-- <p class="article-content">{{ post.content|safe }}</p> -->
+          </div>
+        </article>
+    {% endfor %}
+
+
+
+
+    {% if is_paginated %}
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+    {% endif %}
+
+
+{% endblock content %}
