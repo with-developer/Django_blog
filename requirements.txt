@@ -4,5 +4,6 @@ django-crispy-forms==1.7.2
 django-js-asset==1.2.2
 djangorestframework==3.9.4
 Pillow==6.0.0
+python-dotenv==0.15.0
 pytz==2020.4
 sqlparse==0.4.1
