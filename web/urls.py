@@ -34,6 +34,7 @@ urlpatterns = [
     path('password-change/done/', auth_views.PasswordChangeDoneView.as_view(
         template_name='users/password_change_done.html'), name='password_change_done'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('challenges/', include('challenges.urls')),
 ]
 
 if settings.DEBUG:

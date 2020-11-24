@@ -1,0 +1,125 @@
+#challenges {
+	margin-top: 2%;
+	color:#000;
+}
+
+.heading p {
+	font-size: 20px;
+	font-family: 'ABeeZee'
+}
+
+.challengesSet {
+	width: 100%;
+	padding: 20px 0;
+}
+
+.heading {
+	margin-bottom: 25px;
+}
+
+#crypto, #for, #pwn, #re, #stego, #web {
+	/*border-bottom: 4px double #aaa;
+	border-left: 4px double #aaa;*/
+	padding: 10px;
+	margin-bottom: 10px;
+	/*background-color: #eee;
+	box-shadow: 5px 10px 8px 5px #aaa;*/
+}
+
+.mission {
+	height: 100px;
+	width: 200px;
+	display: inline-block;
+	background-color: #696969;
+	transition: 0.5s;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	color: #fff;
+	padding-top: 15px;
+	margin-right: 25px;
+	margin-bottom: 10px;
+	opacity: 0.9;
+	box-shadow: 0 4px 8px 0 #aaa;
+}
+
+.solved {
+	background-color: #4caf50;
+}
+
+.mission:hover {
+	opacity: 1; 
+}
+
+.modal a {
+	color: #008cba;
+}
+
+.modal a:hover {
+	text-decoration: underline;
+}
+
+.modal {
+	margin-top: 10%;
+}
+
+.input_flag {
+	width: 80%;
+	padding:10px;
+	background-color: #eee;
+	border: 0;
+	border-radius: 5px;
+}
+
+.input_flag_button {
+	height: 40px;
+	border: 0;
+	width: 100px;
+	color: #222;
+	background-color: #fff;
+	border: 2px solid #444;
+	display: inline-block;
+	font-size: 16px;
+	text-decoration: none;
+	transition: 0.5s;
+	/*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+	margin-left: 5px;
+	float: right;
+}
+
+.input_flag_button:hover {
+	background-color: #444;
+	color: #fff;
+	border: 1px solid #008cba;
+}
+
+#flag_correct, #flag_incorrect, #flag_already {
+	width: 100%;
+	height: 40px;
+	background-color: #4caf50;
+	margin-top: 10px;
+	color: #fff;
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#flag_incorrect {
+	background-color: #f44336;
+}
+
+#flag_already {
+	background-color: #008cba;
+}
+
+@media screen and (max-width: 600px) {
+	.input_flag {
+		width: 70%;
+	}
+
+	.input_flag_button {
+		width: 60px;
+		font-size: 12px;
+	}
+}
