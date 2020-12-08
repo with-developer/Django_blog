@@ -1,0 +1,197 @@
+body {position: relative;}
+* {box-sizing: border-box;}
+
+/* layout */
+#contents {position: relative;}
+.container {width: 1200px; height:inherit; margin: 0 auto; /*background-color: rgba(0,0,0,0.5);*/}
+#section1 {height: 100vh; background-color: #fccf52; position: relative;}
+
+/* section1 */
+/* iconfolder */
+.iconfolder {width: 100%; position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.iconfolder .folder {width:200px;}
+.iconfolder .folder.left {float:left;}
+.iconfolder .folder.right {float:right;}
+.iconfolder .folder .icon {margin-bottom: 40px;}
+.iconfolder .folder .icon .icon-img {width: 70px; height: 70px; margin:0 auto; margin-bottom: 7px;}
+.iconfolder .folder .icon .icon-img img {width: 65px;}
+.iconfolder .folder .icon .icon-img:hover {animation:tada 0.8s; cursor: pointer; cursor: grab;}
+.iconfolder .folder .icon .icon-tit {text-align:center; color:#fff; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);}
+
+/* shop-wrap */
+.shop-wrap {
+	max-width: 1150px; width: 70%; height: 85%;
+	position: absolute; left: 50%; top: 100%; transform: translate(-50%,-100%);
+}
+/*#droppable {
+	width: 44%	; height: 31%; background: #000;
+	position: absolute; left: 16%; top: 37%;
+}*/
+.shop-wrap .shopfront .neon {
+	width: 50%; height: 200px;
+	position: absolute; left: 35%; top: -11%;
+}
+.shop-wrap .shopfront .neon svg polygon {box-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fccf52, 0 0 0.5em #fccf52, 0 0 0.1em #fccf52, 0 10px 3px #000;}
+.shop-wrap .shopfront .neon svg circle {box-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fccf52, 0 0 0.5em #fccf52, 0 0 0.1em #fccf52, 0 10px 3px #000;}
+.shop-wrap .shopfront .neon .weltxt {
+	position: absolute; left: 23%; top: 14%; transform: translateX(-25%);
+	color:#fff; font-size: 30px; font-family: 'Monoton', cursive;
+}
+.shop-wrap .shopfront .neon .weltxt span {
+	text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fccf52, 0 0 0.5em #fccf52, 0 0 0.1em #fccf52, 0 10px 3px #000;
+	animation: blink linear infinite 2s;
+}
+.shop-wrap .shopfront .neon .weltxt em {
+	text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fccf52, 0 0 0.5em #fccf52, 0 0 0.1em #fccf52, 0 10px 3px #000;
+	animation: blink2 linear infinite 2s;
+}
+@keyframes blink {
+  68%	{color: inherit; text-shadow: inherit;}
+  69%	{color: #333;}
+  70% {text-shadow: none;}
+  71% {color: inherit; text-shadow: inherit;}
+  72% {color: #333; text-shadow: none;}
+  73% {color: inherit; text-shadow: inherit;}
+  82% {color: #333; text-shadow: none;}
+  82.5% {color: inherit; text-shadow: inherit;}
+}
+@keyframes blink2 {
+  78%	{color: inherit; text-shadow: inherit;}
+  79%	{color: #333;}
+  80% {text-shadow: none;}
+  81% {color: inherit; text-shadow: inherit;}
+  82% {color: #333; text-shadow: none;}
+  83% {color: inherit; text-shadow: inherit;}
+  92% {color: #333; text-shadow: none;}
+  92.5% {color: inherit; text-shadow: inherit;}
+}
+.shop-wrap .shopfront .neon svg {width: 60%;}
+
+
+/* browser basic */
+.file.about {display: none; }
+.browser {
+	max-width: 1150px; width: 70%; height: 85%; background: #f7b69d;
+	position: absolute; 
+	left: 50%; top: 50%; transform: translate(-50%,-50%); 
+	border: 3px solid #000;
+}
+.browser iframe {width: 99.8%; height:100%; border:none;}
+.browser-ui {
+	
+}
+.browser-ui .ui-top {width: 100%; height: 45px; background: #88d3ea; border-bottom:3px solid #000;} 
+.browser-ui .ui-top .top-btn {
+	padding: 10px 0 0 10px;
+}
+.browser-ui .ui-top .top-btn .btn {
+	width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 7px;
+    border:3px solid #000;
+}
+.browser-ui .ui-top .top-btn .btn1 {
+	background: #e94272;
+	position: relative;
+	cursor: pointer;
+}
+.browser-ui .ui-top .top-btn .btn1:before {
+	content: '';
+    position: absolute;
+    left: 3px;
+    top: 6px;
+    height: 2px;
+    width: 9px;
+    transform: rotate(45deg);
+    background: #000;
+}
+.browser-ui .ui-top .top-btn .btn1:after {
+	content: '';
+    position: absolute;
+    left: 3px;
+    top: 6px;
+    height: 2px;
+    width: 9px;
+    transform: rotate(-45deg);
+    background: #000;
+}
+.browser-ui .ui-top .top-btn .btn2 {background: #fccf52;}
+.browser-ui .ui-top .top-btn .btn3 {background: #b0f1a1;}
+
+.browser-ui .ui-bottom {	width: 100%; height: 45px;	background: #d1d3d4;	border-bottom:3px solid #000; overflow: hidden;}
+.browser-ui .ui-bottom .bot-btn {float:left; width: 10%;}
+.browser-ui .ui-bottom .bot-btn > div {float: left; width: 33.3333%; padding: 10px;}
+.browser-ui .ui-bottom .bot-btn > div img {width: 18px; height: 18px;}
+
+.browser-ui .ui-bottom .address { float:left; width: 90%;}
+.browser-ui .ui-bottom .address span {
+	width: 98%; height: 30px;
+	background: #fff;
+	border: 3px solid #000;
+	text-align: center;
+	margin: 6px 13px;
+	display: block;
+}
+.browser-ui .ui-bottom .address em {font-size: 16px; display:block;}
+
+.browser-ui .browser-body {width: 100%; height: 100%;}
+.browser-ui .browser-body .file-box {overflow: hidden; margin-top: 2%; margin-left: 2%;}
+.browser-ui .browser-body .file-box > div {float:left; width: 25%;}
+.browser-ui .browser-body .file-box .file {
+	width: 200px; height: 200px; 
+	border: 3px solid #000; 
+	margin-right: 5%; margin-bottom: 5%; 
+	background: #fff; position: relative;
+	cursor: pointer;
+}
+.browser-ui .browser-body .file-box .file:after {
+	content:'';
+	width: 200px;
+	height: 200px;
+	background: #a5a6f9;
+	border: 3px solid #000;
+	position: absolute;
+	left: 5px; top: 5px;
+	z-index: -1;
+}
+.browser-ui .browser-body .file-box .file .file-thumb {width: 150px; height: 150px; margin: 0 auto; border: 3px solid #000; margin-top: 10px;}
+.browser-ui .browser-body .file-box .file .file-thumb img {width: 100%;}
+.browser-ui .browser-body .file-box .file .file-name {font-size: 20px; text-align: center; margin-top: 3px;}
+
+.browser.one {display: none;}
+
+
+/**************************************** mediaQuery *********************************/
+@media (max-width: 1200px) {
+	.container {width: 100%;}
+	.row {padding: 0 15px;}
+	.iconfolder .folder {width: 180px;}
+	.iconfolder .folder .icon .icon-img {width: 65px; height: 65px;}
+	.iconfolder .folder .icon .icon-img img {width: 60px;}
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 960px) {
+	.iconfolder {top:80%;}
+	.iconfolder .folder.left {float:none; width: 100%;}
+	.iconfolder .folder.right {float: none; width: 100%;}
+	.iconfolder .folder.left .icon {float:left; width: 25%;}
+	.iconfolder .folder.right .icon {float:left; width: 20%;}
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 600px) {
+
+}
+
+@media (max-width: 400px) {
+
+}

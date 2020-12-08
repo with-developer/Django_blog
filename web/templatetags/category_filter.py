@@ -38,3 +38,10 @@ def category_filter2(value):
     value =value.replace('0', '')
     return value
 
+@register.filter
+def category_filter3(value):
+    value = value.replace('&', '')
+    value = value.replace('/', '')
+    value = value.replace('?', '')
+    value =value.replace('search=', '' )
+    return value

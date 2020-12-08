@@ -44,6 +44,15 @@ class PostListView(ListView):
                 Q(category__icontains=keyword))
         else:
             object_list = self.model.objects.all()
+        try:
+            keyword2 = self.request.GET['search']
+        except:
+            keyword2 = ''
+        if (keyword2 != ''):
+            object_list = self.model.objects.filter(
+                Q(title__icontains=keyword2))
+        else:
+            object_list = self.model.objects.all()
         return object_list
 
 

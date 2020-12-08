@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+		<div id="score">
+			<div class="table-responsive">
+						
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Rank</th>
+							<th>Name</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for t in profile_list %}
+						<tr>
+							<td>
+								{{ forloop.counter }}
+							</td>
+							<td>
+								<a href="{{ t.user }}" style="color: #008cba;">{{ t.user }}</a>
+							</td>
+							<td>
+								{{ t.points }}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

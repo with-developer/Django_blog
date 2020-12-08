@@ -13,8 +13,21 @@
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Profile Info</legend>
-            {{ u_form|crispy }}
+			<div class="media-body">
+            	<h2 class="account-heading">
+				사용자 이름
+				<br>
+				{{ user.username }}
+				<br><br>
+				이메일
+				<br>
+				{{ user.email }}
+				</h2>
+			</div>
+			<!--
+			{{ u_form|crispy }}
             {{ p_form|crispy }}
+			-->
         </fieldset>
         <div class="form-group">
                 <a href="{% url 'password_change' %}" class="btn btn-outline-danger" role="button">Change Password</a>
