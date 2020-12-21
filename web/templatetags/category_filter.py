@@ -26,6 +26,7 @@ def category_filter2(value):
     value = value.replace('?', '')
     value =value.replace('page=', '' )
     value =value.replace('category=', '' )
+    value =value.replace('blog', '' )
     value =value.replace('1', '')
     value =value.replace('2', '')
     value =value.replace('3', '')
@@ -43,5 +44,7 @@ def category_filter3(value):
     value = value.replace('&', '')
     value = value.replace('/', '')
     value = value.replace('?', '')
-    value =value.replace('search=', '' )
+    value = value.replace('search=', '' )
+    value = value.replace('blog', '' )
+    value.unquote(value)
     return value

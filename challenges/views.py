@@ -78,7 +78,7 @@ def index(request) :
     except :
         pass
 
-    return render(request, 'challenges.html',{'data_stego':challenge_info_stego_object,
+    return render(request, 'wargame.html',{'data_stego':challenge_info_stego_object,
                                               'data_for':challenge_info_for_object,
                                               'data_re':challenge_info_re_object,
                                               'data_pwn':challenge_info_pwn_object,
@@ -172,6 +172,7 @@ def addchallenges(request) :
 	else :
 		return redirect("/")
     
+@login_required(login_url="/login/")
 def rank(request) :
     current_user = request.user
     profile_list = Profile.objects.order_by("-points") & Profile.objects.filter(~Q(user=1)) & Profile.objects.filter(~Q(user=3))

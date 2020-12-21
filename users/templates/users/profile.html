@@ -12,7 +12,7 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Profile Info</legend>
+            <legend class="border-bottom mb-4">Profile Info ( 수정중 )</legend>
 			<div class="media-body">
             	<h2 class="account-heading">
 				사용자 이름
@@ -24,17 +24,12 @@
 				{{ user.email }}
 				</h2>
 			</div>
-			<!--
-			{{ u_form|crispy }}
-            {{ p_form|crispy }}
-			-->
+
         </fieldset>
         <div class="form-group">
                 <a href="{% url 'password_change' %}" class="btn btn-outline-danger" role="button">Change Password</a>
         </div>
-        <div class="form-group">
-            <button class="btn btn-success" type="submit">Update</button>
-        </div>
+
     </form>
 </div>
 {% endblock content %}

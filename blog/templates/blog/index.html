@@ -1,137 +1,106 @@
-{% extends "blog/base.html" %}
-{% load category_filter %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Security Framework</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+	
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 
-{% block content2 %}
+  
+</head>
 
-  <div class="container-fluid">
-	  <div class="margin">
-    <div>
-      <ul class="nav navbar-nav">
-			  
-		  {% if not request.get_full_path|category_filter2 %}
-		  <li class="active"><a class="btn btn-info mb-2" href="/">All Posts</a></li>
-		  {% else %}
-		  <li class="active"><a class="btn btn-outline-info mb-2" href="/">All Posts</a></li>
-		  {% endif %}
-		  
-		  <br><br>
-		  {% if 'Security' in request.get_full_path|category_filter2 %}
-		  <li><a class="btn btn-info mb-2"  href="?category=Security">Security</a></li>
-		  {% else %}
-		  <li><a class="btn btn-outline-info mb-2"  href="?category=Security">Security</a></li>
-		  {% endif %}
-		  {% if request.get_full_path|category_filter2 == 'Security_CTF' %}
-		  <li>└<a class="btn btn-info mb-2" href="?category=Security_CTF">CTF</a></li>
-		  {% else %}
-		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_CTF">CTF</a></li>
-		  {% endif %}
-		  {% if request.get_full_path|category_filter2 == 'Security_Wargame' %}
-		  <li>└<a class="btn btn-info mb-2" href="?category=Security_Wargame">Wargame</a></li>
-		  {% else %}
-		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_Wargame">Wargame</a></li>
-		  {% endif %}
-		  {% if request.get_full_path|category_filter2 == 'Security_Study' %}
-		  <li>└<a class="btn btn-info mb-2" href="?category=Security_Study">Study</a></li>
-		  {% else %}
-		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Security_Study">Study</a></li>
-		  {% endif %}
-		  <br>
-		  
-		  {% if 'Development' in request.get_full_path|category_filter2 %}
-          <li><a class="btn btn-info mb-2" href="?category=Development">Development</a></li>
-		  {% else %}
-		  <li><a class="btn btn-outline-info mb-2" href="?category=Development">Development</a></li>
-		  {% endif %}
-		  {% if request.get_full_path|category_filter2 == 'Development_Programming' %}
-		  <li>└<a class="btn btn-info mb-2" href="?category=Development_Programming">Programming</a></li>
-		  {% else %}
-		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Development_Programming">Programming</a></li>
-		  {% endif %}
-		  {% if request.get_full_path|category_filter2 == 'Development_Study' %}
-		  <li>└<a class="btn btn-info mb-2" href="?category=Development_Study">Study</a></li> 
-		  {% else %}
-		  <li>└<a class="btn btn-outline-info mb-2" href="?category=Development_Study">Study</a></li> 
-		  {% endif %}
-		  <br>
+<body>
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- ======= Header ======= -->
+  <header id="header" class="header-tops">
 
-		  {% if 'Other' in request.get_full_path|category_filter2 %}
-		  <li class="active"><a class="btn btn-info mb-2" href="?category=Other">Other</a></li>
-		  {% else %}
-		  <li class="active"><a class="btn btn-outline-info mb-2" href="?category=Other">Other</a></li>
-		  {% endif %}
-		  
-      </ul>
-		</div>
+    <div class="container">
+
+      <h1><a href="{% url 'index' %}">Lee Jun Hyeong</a></h1>
+      <h2 style="color:#fff">나는 <span class="typing" style="color:#12D640"></span></h2>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href=""> <span>Home</span></a></li>
+          <li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
+          <li><a href="{% url 'challenges' %}"> <span>Wargame</span></a></li>
+			<li><a href="{% url 'rank' %}"> <span>Rank</span></a></li>
+          <li><a href="{% url 'about' %}"> <span>About Me</span></a></li>
+          <li><a href="#contacts"> <span>Contact</span></a></li>
+			<li></li><li></li><li></li><li></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'profile' %}"> <span>Profile</span></a></li>
+            <li><a href="{% url 'logout' %}"> <span>Logout</span></a></li>
+            {% else %}
+			<li><a href="{% url 'login' %}"> <span>Login</span></a></li>
+			<li><a href="{% url 'register' %}"> <span>Register</span></a></li>
+            {% endif %}
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <div class="social-links">
+          <a href="https://www.instagram.com/junja_99/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/web1832" target="_blank" class="github"><i class="bx bxl-github"></i></a>
+          <a href="" target="_blank" class="google"><i class="bx bxl-google"></i></a>
+
+      </div>
+
     </div>
-  </div>
-{% endblock content2 %}
+  </header><!-- End Header -->
+ 
 
+  <!-- End Contact Section -->
 
+  <!-- Vendor JS Files -->
 
-{% block content %}
-<!-- Search Form -->
-<form class="form-inline my-2 my-lg-0 pb-2"> 
-	<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search" style="width: 400px">
-    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
-</form>
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/typed.js/typed.min.js' %}"></script>
+  <script type="text/javascript">
+    var typed = new Typed('.typing',{
+      strings: ["취약점 분석가", "풀스택 개발자"],
+      loop: true,
+      typeSpeed: 65,
+      backSpeed: 65
+    });
+  </script>
 
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
 
- <h1 class="mb-3">
-	 {% if '/?category=' in request.get_full_path %}
-	 {% if request.get_full_path|category_filter2 %}
-	 <font size=6px>Category By '{{ request.get_full_path|category_filter2 }}'</font> <font size=5px;>({{ page_obj.paginator.count }})</font>
-	 {% endif %}
-	 
-	 {% elif '/?search=' in request.get_full_path %}
-	 {% if request.get_full_path|category_filter3 %}
-	 <font size=6px>Search By '{{ request.get_full_path|category_filter3 }}'</font> <font size=5px;>({{ page_obj.paginator.count }})</font>
-	 {% endif %}
-	 
-	 {% else %}
-	 <font size=6px>Category By 'All Posts' </font><font size=5px;>({{ page_obj.paginator.count }})</font>
-	 {% endif %}
-</h1>
+</body>
 
-	{% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user_posts' post.author.username %}">{{ post.author }}</a>
-				<small class="text-muted">{{ post.date_posted|date:"Y년 m월 d일 " }}</small>
-				
-				
-            </div>
-		 <font size="3em"><small class="text-muted">[{{ post.category|safe }}]</small></font>
-		  <h2><a class="article-title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-            <!-- <p class="article-content">{{ post.content|safe }}</p> -->
-          </div>
-        </article>
-    {% endfor %}
-
-
-
-
-    {% if is_paginated %}
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page=1">First</a>
-        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
-
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-info mb-4" href="?{{ request.get_full_path|category_filter }}&page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
-    {% endif %}
-
-
-{% endblock content %}
+</html>
