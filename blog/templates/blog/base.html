@@ -6,83 +6,131 @@
 <head>
 
 
-	
+  <!-- End Google Tag Manager -->
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Security Framework</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <link href="{% static 'css/icofont/icofont.min.css' %}" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Font Awesome -->
-	
+<!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-  <!-- Medium Editor -->
-  <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css"
-    type="text/css" media="screen" charset="utf-8">
 
   <!-- Custom Style -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-  {% if title %}
-  <title>Junja Blog - {{ title }}</title>
-  {% else %}
-  <title>Junja Blog</title>
-  {% endif %}
-	
+	{% block customcss %}
+	{% endblock %}
 	<style>
-	.dropdown:hover>.dropdown-menu {
-     display: block;}
-		.margin{
-			margin-left: 100px;
-			padding: 10px;
-		}
 		
+		
+
 	</style>
 	
 </head>
 
 <body>
-  <header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-      <div class="container">
-        <a class="navbar-brand mr-4" href="{% url 'index' %}">Junja Blog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'about' %}">About me</a>
-          </div>
-          <!-- Navbar Right Side -->
-          <div class="navbar-nav">
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- ======= Header ======= -->
+<header id="header" class="header-tops header-top">
+
+    <div class="container">
+
+	<h1><a href="{% url 'index' %}">Lee Jun Hyeong</a></h1>
+      <h2 style="color:#fff">나는 <span class="typing" style="color:#12D640"></span></h2>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+			{% if not request.get_full_path %}
+          	<li class="active"><a href="{% url 'index' %}"> <span>Home</span></a></li>
+			{% else %}
+			<li><a href="{% url 'index' %}"> <span>Home</span></a></li>
+			{% endif %}
+			
+			{% if request.get_full_path == '/blog/' %}
+          <li class="active"><a href="{% url 'blog' %}"><span>Blog</span></a></li>
+			{% else %}
+			<li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
+			{% endif %}
+
+			{% if request.get_full_path == '/wargame/' %}
+          <li class="active"><a href="{% url 'challenges' %}"><span>Wargame</span></a></li>
+			{% else %}
+			<li><a href="{% url 'challenges' %}"><span>Wargame</span></a></li>
+			{% endif %}
+			
+			{% if request.get_full_path == '/wargame/rank/' %}
+          <li class="active"><a href="{% url 'rank' %}"><span>Rank</span></a></li>
+			{% else %}
+			<li><a href="{% url 'rank' %}"><span>Rank</span></a></li>
+			{% endif %}
+
+			{% if request.get_full_path == '/about/' %}
+          <li class="active"><a href="{% url 'about' %}"><span>About&nbsp;Me</span></a></li>
+			{% else %}
+			<li><a href="{% url 'about' %}"><span>About&nbsp;Me</span></a></li>
+			{% endif %}
+			<li></li><li></li>
+			
+			{% if user.is_superuser %}
+			<li><a href="{% url 'post_create' %}"> <span>New Post</span></a></li>
+			<li><a href="{% url 'add' %}"> <span>add challenge</span></a></li>
+			{% endif %}
             {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'post_create' %}">New Post</a>
-            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+			<li><a href="{% url 'profile' %}"> <span>Profile</span></a></li>
+            <li><a href="{% url 'logout' %}"> <span>Logout</span></a></li>
             {% else %}
-            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+			<li><a href="{% url 'login' %}"> <span>Login</span></a></li>
+			<li><a href="{% url 'register' %}"> <span>Register</span></a></li>
             {% endif %}
-          </div>
-        </div>
+			
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <div class="social-links">
+          <a href="" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="" target="_blank" class="github"><i class="bx bxl-github"></i></a>
+          <a href="" target="_blank" class="google"><i class="bx bxl-google"></i></a>
+
       </div>
-    </nav>
-  </header>
-  <main role="main" class="container-fluid">
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= About Section ======= -->
+<section class="section-show">
+
+<main role="main" class="container-fluid">
     <div class="row">
-		<div class="col-md-1">
+		<div class="col-md-3">
+			
       </div>
-		<div class="col-md-2">
-        {% block content2 %}{% endblock %}
-      </div>
+
       <div class="col-md-6">
         {% if messages %}
         {% for message in messages %}
@@ -94,11 +142,13 @@
         {% block content %}{% endblock %}
       </div>
 		<div class="col-md-3">
-        
+        {% block content2 %} {% endblock %}
       </div>
 
     </div>
   </main>
+
+  </section><!-- End About Section -->
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -111,7 +161,25 @@
   </script>
 
   <!-- Optional JavaScript -->
-  <script src="{% static 'js/main.js' %}"></script>
+ <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/typed.js/typed.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+		<script>
+		$('#testBtn').click(function(e){
+			e.preventDefault();
+			$('#testModal').modal("show");
+		});
+	</script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ from django.views.generic import (
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/index.html'
+    template_name = 'blog/blog.html'
     context_object_name = 'posts'
     paginate_by = 5
 
@@ -44,6 +44,15 @@ class PostListView(ListView):
                 Q(category__icontains=keyword))
         else:
             object_list = self.model.objects.all()
+            
+        try:
+            keyword2 = self.request.GET['search']
+        except:
+            keyword2 = ''
+        if (keyword2 != ''):
+            object_list = self.model.objects.filter(
+                Q(title__icontains=keyword2))
+
         return object_list
 
 
@@ -112,3 +121,6 @@ def add_comment(request, pk):
     else:
         return redirect('post_detail', pk=pk)
     return redirect('post_detail', pk=pk)
+
+def index(request):
+    return render(request, 'blog/index.html')

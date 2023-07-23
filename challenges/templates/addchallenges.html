@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+{% load static%}
+
+{% block customcss %}
+	<link rel="stylesheet" type="text/css" href="{% static 'challenges_css/css/addchallenge.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'challenges_css/css/challenges.css' %}">
+	<script type="text/javascript" src="{% static 'challenge/js/jquery-3.2.1.min.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		{% if request.method == 'POST' %}
+			{% if success %}
+				<div id="success">
+					<p>Challenge added</p>
+				</div>
+			{% else %}
+				<div id="failure">
+					<p>Some Error Occured</p>
+				</div>
+			{% endif %}
+		{% endif %}
+		<div id="addChallenge">
+			<h3>Add challenges</h3>
+			<form method="post" enctype="multipart/form-data" autocomplete="off">
+				{% csrf_token %}
+				{% for c in form %}
+					<div class="form-group">
+						<label>{{ c.label }}</label>
+						{{ c }}
+					</div>
+				{% endfor %}
+				<input type="submit" name="add" value="Add" class="btn btn-primary">
+			</form>
+		</div>
+	</div>
+{% endblock %}
